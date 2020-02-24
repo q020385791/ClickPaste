@@ -22,22 +22,7 @@ namespace AutoSelectCommond
         private void Button1_Click(object sender, EventArgs e)
         {
             HandleRunningInstance(_temp);
-            //try
-            //{
-            //    var activatedHandle = GetForegroundWindow();
-
-            //    Process[] processes = Process.GetProcesses();
-            //    foreach (Process clsProcess in processes)
-            //    {
-
-            //        if (activatedHandle == clsProcess.MainWindowHandle)
-            //        {
-            //            string processName = clsProcess.ProcessName;
-
-            //        }
-            //    }
-            //}
-            //catch { }
+         
             SendKeys.Send("A");
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
