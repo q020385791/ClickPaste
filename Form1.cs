@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -157,6 +158,8 @@ namespace AutoSelectCommond
         private void Form1_Load(object sender, EventArgs e)
         {
             this.MouseEnter += new System.EventHandler(this.MouseEnters);
+
+
         }
         Process _temp;
         private void MouseEnters(object sender, EventArgs e)
@@ -204,6 +207,33 @@ namespace AutoSelectCommond
             // 相同時透過ShowWindowAsync還原，以及SetForegroundWindow將程式至於前景
             ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL);
             SetForegroundWindow(instance.MainWindowHandle);
+        }
+
+        private void Btnpaste_Click(object sender, EventArgs e)
+        {
+            HandleRunningInstance(_temp);
+
+            SendKeys.Send("A");
+        }
+        string FolderPath;
+        string FilePath;
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+            string FolderPath = System.IO.Directory.GetCurrentDirectory();
+            FilePath = labtxtPath.Text;
+            //如果檔案存在，重新寫入
+            if (File.Exists(FilePath))
+            {
+
+            }
+            else
+            {
+            //如果檔案不存在，新增檔案
+            }
+            using (FileStream fs = File.Create(FilePath))
+            {
+                
+            }
         }
     }
 }
