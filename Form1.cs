@@ -23,7 +23,7 @@ namespace AutoSelectCommond
         private void Button1_Click(object sender, EventArgs e)
         {
             HandleRunningInstance(_temp);
-         
+
             SendKeys.Send("A");
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
@@ -79,7 +79,7 @@ namespace AutoSelectCommond
                     Console.WriteLine((MouseMessages)wParam + "," + hookStruct.pt.x.ToString() + "," + hookStruct.pt.y.ToString());
                 }
 
-                
+
 
 
 
@@ -128,7 +128,7 @@ namespace AutoSelectCommond
               IntPtr wParam, IntPtr lParam);
             [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
             public static extern IntPtr GetModuleHandle(string lpModuleName);
-            
+
         }
         [DllImport("user32.dll")]
         static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
@@ -159,7 +159,7 @@ namespace AutoSelectCommond
         {
             this.MouseEnter += new System.EventHandler(this.MouseEnters);
 
-
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\" + "ClickPaste");
         }
         Process _temp;
         private void MouseEnters(object sender, EventArgs e)
@@ -195,11 +195,11 @@ namespace AutoSelectCommond
                         //Console.WriteLine(String.Format("({0}, {1})", PT.X.ToString(), PT.Y.ToString()));
                     }
                 }
-                
+
             }
             catch { }
             // Update the mouse event label to indicate the MouseLeave event occurred.
-            Console.WriteLine( sender.GetType().ToString() + ": MouseEnter");
+            Console.WriteLine(sender.GetType().ToString() + ": MouseEnter");
         }
         private const int WS_SHOWNORMAL = 1;
         public static void HandleRunningInstance(Process instance)
@@ -217,10 +217,12 @@ namespace AutoSelectCommond
         }
         string FolderPath;
         string FilePath;
+        string FileName;
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            string FolderPath = System.IO.Directory.GetCurrentDirectory();
-            FilePath = labtxtPath.Text;
+            FolderPath = System.IO.Directory.GetCurrentDirectory();
+            FilePath = System.IO.Directory.GetCurrentDirectory() + @"\" + txtTitle.Text;
+            FileName = txtTitle.Text;
             //如果檔案存在，重新寫入
             if (File.Exists(FilePath))
             {
@@ -228,11 +230,25 @@ namespace AutoSelectCommond
             }
             else
             {
-            //如果檔案不存在，新增檔案
+                using (StreamWriter sw = File.CreateText(Directory.GetCurrentDirectory() + @"\" + "ClickPaste"))
+                {
+                    int rr = textBox2.Lines.Length;
+
+                    foreach (string item in textBox2.Lines)
+                    {
+                        sw.WriteLine(item + "***");
+                    }
+                    sw.WriteLine(";");
+                }
             }
-            using (FileStream fs = File.Create(FilePath))
+        }
+        private void BtnRead_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                
+
             }
         }
     }

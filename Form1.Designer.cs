@@ -33,7 +33,7 @@
             this.btnRead = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnNew = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -67,6 +67,7 @@
             this.btnRead.TabIndex = 2;
             this.btnRead.Text = "讀取";
             this.btnRead.UseVisualStyleBackColor = true;
+            this.btnRead.Click += new System.EventHandler(this.BtnRead_Click);
             // 
             // listBox1
             // 
@@ -87,12 +88,12 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(104, 25);
-            this.textBox1.TabIndex = 5;
+            this.txtTitle.Location = new System.Drawing.Point(16, 34);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(104, 25);
+            this.txtTitle.TabIndex = 5;
             // 
             // textBox2
             // 
@@ -138,7 +139,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnRead);
@@ -159,7 +160,7 @@
         private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
