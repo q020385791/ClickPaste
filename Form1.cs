@@ -19,7 +19,7 @@ namespace AutoSelectCommond
         {
             InitializeComponent();
         }
-
+        public string FileName;
         private void Button1_Click(object sender, EventArgs e)
         {
             HandleRunningInstance(_temp);
@@ -217,7 +217,7 @@ namespace AutoSelectCommond
         }
         string FolderPath;
         string FilePath;
-        string FileName;
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             FolderPath = System.IO.Directory.GetCurrentDirectory();
@@ -230,7 +230,14 @@ namespace AutoSelectCommond
             }
             else
             {
-                using (StreamWriter sw = File.CreateText(Directory.GetCurrentDirectory() + @"\" + "ClickPaste"))
+
+                //檔案新視窗問題：不會等輸入完再繼續執行
+                AutoSelectCommond.FileName NewForm = new FileName(this);
+                //while (FileName.Length == 0)
+                //{
+
+                //}
+                using (StreamWriter sw = File.CreateText(Directory.GetCurrentDirectory() + @"\" + "ClickPaste"+@"\"+FileName))
                 {
                     int rr = textBox2.Lines.Length;
 
